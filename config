@@ -1,0 +1,14 @@
+# Specifica il provider OpenID Connect da utilizzare
+
+OIDCProviderMetadataURL http://host.docker.internal:8080/realms/anac/.well-known/openid-configuration
+OIDCClientID "avcp-riscossione"
+OIDCClientSecret "Qs2LPZ2cZSqY8K9KlfcsiXSVfQw0ppT1"
+OIDCRedirectURI http://localhost:81/protected
+OIDCCryptoPassphrase 1234567
+
+
+# Protegge la radice dell'applicazione
+<Location /protected/>
+    AuthType openid-connect
+    Require valid-user
+</Location>
